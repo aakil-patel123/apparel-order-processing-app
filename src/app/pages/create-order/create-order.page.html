@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Order</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item><ion-input placeholder="Customer Name" [(ngModel)]="customerName"></ion-input></ion-item>
+  <ion-item><ion-input placeholder="Item Name" [(ngModel)]="itemName"></ion-input></ion-item>
+  <ion-item><ion-input placeholder="Size (S/M/L)" [(ngModel)]="size"></ion-input></ion-item>
+  <ion-item><ion-input placeholder="Color" [(ngModel)]="color"></ion-input></ion-item>
+  <ion-item><ion-input type="number" placeholder="Quantity" [(ngModel)]="quantity"></ion-input></ion-item>
+
+  <ion-item>
+    <ion-select label="Merchant Partner" [(ngModel)]="merchantPartner">
+      <ion-select-option *ngFor="let m of (merchants$ | async)" [value]="m.companyName">
+        {{ m.companyName }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="block" (click)="saveOrder()">Save Order</ion-button>
+</ion-content>

@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Apparel Order Processing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Add Order (Interactive) -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Add New Order</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-input placeholder="Customer Name" [(ngModel)]="newCustomer"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Item Name" [(ngModel)]="newItem"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="number" placeholder="Quantity" [(ngModel)]="newQty"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" (click)="addOrder()">Add Order</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Orders -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Orders</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let order of (orders$ | async)">
+          <ion-label>
+            <h2>{{ order.customerName }}</h2>
+            <p>{{ order.itemName }} - Qty: {{ order.quantity }}</p>
+            <p>Status: {{ order.status }}</p>
+            <p>Order ID: {{ order.orderId }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Staff -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Staff</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let s of (staff$ | async)">
+          <ion-label>
+            <h2>{{ s.name }}</h2>
+            <p>{{ s.role }} ({{ s.staffId }})</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Merchants -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Merchants</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let m of (merchants$ | async)">
+          <ion-label>
+            <h2>{{ m.companyName }}</h2>
+            <p>Contact: {{ m.contact }}</p>
+            <p>Merchant ID: {{ m.merchantId }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

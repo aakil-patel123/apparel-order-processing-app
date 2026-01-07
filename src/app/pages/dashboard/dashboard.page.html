@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dashboard</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Welcome, {{ name }} ({{ role }})</h2>
+
+  <ion-card>
+    <ion-card-content>
+      <p>Total Orders: <b>{{ total$ | async }}</b></p>
+      <p>Pending: <b>{{ pending$ | async }}</b></p>
+      <p>Completed: <b>{{ completed$ | async }}</b></p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="go('/create-order')">Create Order</ion-button>
+  <ion-button expand="block" (click)="go('/orders')">View Orders / Tracking</ion-button>
+
+  <ion-button *ngIf="role === 'manager'" expand="block" (click)="go('/staff-activity')">
+    Staff Activity
+  </ion-button>
+</ion-content>

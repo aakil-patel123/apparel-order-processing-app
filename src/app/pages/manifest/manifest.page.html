@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Manifest</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">Back</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="print()">Print / Save PDF</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="order$ | async as o">
+    <ion-card-header>
+      <ion-card-title>Order Manifest</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><b>Order ID:</b> {{ o.orderId }}</p>
+      <p><b>Customer:</b> {{ o.customerName }}</p>
+      <p><b>Item:</b> {{ o.itemName }}</p>
+      <p><b>Size:</b> {{ o.size }}</p>
+      <p><b>Color:</b> {{ o.color }}</p>
+      <p><b>Quantity:</b> {{ o.quantity }}</p>
+      <p><b>Status:</b> {{ o.status }}</p>
+      <p><b>Merchant:</b> {{ o.merchantPartner }}</p>
+      <p><b>Handled By:</b> {{ o.handledBy }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

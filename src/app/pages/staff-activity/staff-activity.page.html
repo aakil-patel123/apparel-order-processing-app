@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Staff Activity</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Manager-only message -->
+  <ion-card *ngIf="role !== 'manager'">
+    <ion-card-content>
+      This page is for Manager only. Please login as Manager to view staff activity.
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Manager view -->
+  <ion-card *ngIf="role === 'manager'">
+    <ion-card-header>
+      <ion-card-title>Orders Handled by Staff</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let s of (summary$ | async)">
+          <ion-label>
+            <h2>{{ s.name }}</h2>
+            <p>Orders handled: {{ s.count }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

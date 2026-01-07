@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input placeholder="Your Name" [(ngModel)]="name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-select label="Role" [(ngModel)]="role">
+      <ion-select-option value="manager">Manager</ion-select-option>
+      <ion-select-option value="staff">Staff</ion-select-option>
+      <ion-select-option value="merchant">Merchant</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="block" (click)="login()">Login</ion-button>
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Orders / Tracking</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let o of (orders$ | async)">
+      <ion-label>
+        <h2>{{ o.customerName }} ({{ o.orderId }})</h2>
+        <p>{{ o.itemName }} - Qty: {{ o.quantity }}</p>
+        <p>Status: {{ o.status }}</p>
+        <p>Merchant: {{ o.merchantPartner }}</p>
+        <p>Handled By: {{ o.handledBy }}</p>
+
+        <ion-button size="small" (click)="nextStatus(o)">Update Status</ion-button>
+        <ion-button size="small" (click)="openManifest(o)">Manifest</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
